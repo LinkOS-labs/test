@@ -1,0 +1,124 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #050505;
+  color: white;
+  overflow: hidden;
+}
+
+/* BG */
+#bg {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0,255,255,0.35), #050505 65%);
+  z-index: -1;
+  transition: background 0.15s, filter 0.2s;
+}
+
+/* SCREENS */
+section {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s, transform 0.8s;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.96);
+}
+
+/* ENTER */
+#enter h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4rem, 8vw, 8rem);
+  letter-spacing: 0.25em;
+  text-align: center;
+  text-shadow:
+    0 0 20px rgba(0,255,255,0.6),
+    0 0 60px rgba(0,255,255,0.35);
+}
+
+#enterBtn {
+  margin-top: 2rem;
+  padding: 1.2rem 3.5rem;
+  font-size: 1.4rem;
+  letter-spacing: 0.2em;
+  background: transparent;
+  border: 2px solid cyan;
+  color: cyan;
+  cursor: pointer;
+}
+
+.hint {
+  margin-top: 1rem;
+  opacity: 0.6;
+}
+
+/* PARTY */
+header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.logo {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.25em;
+}
+
+#stage {
+  width: 80%;
+  height: 60%;
+  border: 2px solid cyan;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: pulse 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px cyan; }
+  50% { box-shadow: 0 0 40px cyan; }
+  100% { box-shadow: 0 0 10px cyan; }
+}
+
+.screen {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.15em;
+}
+
+/* CROWD */
+#crowd {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 35%;
+  overflow: hidden;
+}
+
+.raver {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid cyan;
+  opacity: 0.6;
+  animation: jump linear infinite;
+}
+
+@keyframes jump {
+  from { transform: translateY(40px); opacity: 0; }
+  30% { opacity: 0.8; }
+  to { transform: translateY(-80px); opacity: 0; }
+}
