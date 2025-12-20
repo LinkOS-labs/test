@@ -1,281 +1,116 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>On Chain Party Animals</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <title>Party Punks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<!-- CYBER PARTY FONTS -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+  <!-- RARE / PREMIUM FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Syne:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-<style>
-/* ================== CORE ================== */
-*{box-sizing:border-box}
-body{
-  margin:0;
-  background:#050505;
-  color:#fff;
-  overflow:hidden;
-  font-family:'Space Grotesk', system-ui, sans-serif;
-}
-
-/* ================== NEON SYSTEM ================== */
-:root{
-  --neon-cyan:#00ffff;
-  --neon-magenta:#ff00ff;
-}
-
-.neon-box{
-  border:2px solid var(--neon-cyan);
-  box-shadow:
-    0 0 10px rgba(0,255,255,.6),
-    0 0 30px rgba(0,255,255,.35);
-}
-
-.neon-text{
-  color:var(--neon-cyan);
-  text-shadow:
-    0 0 6px rgba(0,255,255,.9),
-    0 0 18px rgba(0,255,255,.6),
-    0 0 40px rgba(0,255,255,.35);
-}
-
-/* ================== BACKGROUND ================== */
-#bg{
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  background:
-    radial-gradient(circle at center, rgba(0,255,255,.45), #000 70%);
-  transition:background .15s, filter .2s;
-}
-
-/* ================== SCREENS ================== */
-section{
-  position:absolute;
-  inset:0;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  transition:opacity .6s, transform .6s;
-}
-.hidden{
-  opacity:0;
-  pointer-events:none;
-  transform:scale(.96);
-}
-
-/* ================== ENTER ================== */
-#enter h1{
-  font-family:'Orbitron', monospace;
-  font-size:clamp(3.5rem,8vw,7rem);
-  letter-spacing:.28em;
-  text-align:center;
-}
-#enter button{
-  margin-top:2.2rem;
-  padding:1.2rem 3.6rem;
-  font-size:1.3rem;
-  letter-spacing:.22em;
-  background:transparent;
-  cursor:pointer;
-  font-family:'Orbitron', monospace;
-}
-
-/* ================== PARTY ================== */
-#party header{
-  position:absolute;
-  top:0;
-  width:100%;
-  padding:1rem 2rem;
-  display:flex;
-  justify-content:space-between;
-  font-size:.9rem;
-}
-
-#stage{
-  font-family:'Orbitron', monospace;
-  padding:2.2rem 4.5rem;
-  font-size:2.2rem;
-  letter-spacing:.18em;
-  margin-bottom:2rem;
-  animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-  0%{box-shadow:0 0 10px cyan}
-  50%{box-shadow:0 0 55px cyan}
-  100%{box-shadow:0 0 10px cyan}
-}
-
-/* ================== CONTENT PANELS ================== */
-#panels{
-  display:flex;
-  gap:1.6rem;
-  width:92%;
-  justify-content:center;
-  margin-bottom:2rem;
-}
-
-.panel{
-  flex:1;
-  padding:1.6rem;
-  font-size:.95rem;
-  line-height:1.55;
-}
-
-.panel h2{
-  margin-top:0;
-  font-family:'Orbitron', monospace;
-  font-size:1.1rem;
-  letter-spacing:.18em;
-}
-
-/* ================== CROWD ================== */
-#crowd{
-  position:absolute;
-  bottom:0;
-  width:100%;
-  height:35%;
-  overflow:hidden;
-}
-
-.raver{
-  position:absolute;
-  bottom:-40px;
-  width:42px;
-  height:42px;
-  border:3px solid var(--neon-magenta);
-  opacity:.75;
-  animation:jump linear infinite;
-}
-
-@keyframes jump{
-  from{transform:translateY(0);opacity:0}
-  25%{opacity:.85}
-  to{transform:translateY(-170px);opacity:0}
-}
-</style>
+  <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
 
-<div id="bg"></div>
+  <!-- BACKGROUND -->
+  <div class="bg-banner"></div>
+  <div class="bg-noise"></div>
+  <div class="bg-vignette"></div>
 
-<!-- ENTER -->
-<section id="enter">
-  <h1 class="neon-text">ON CHAIN<br>PARTY ANIMALS</h1>
-  <button id="enterBtn" class="neon-box neon-text">ENTER THE PARTY</button>
-</section>
+  <main class="frame">
 
-<!-- PARTY -->
-<section id="party" class="hidden">
-  <header>
-    <div class="neon-text" style="font-family:Orbitron">PARTY ANIMALS</div>
-    <div id="status" class="neon-text">🟢 LIVE</div>
-  </header>
+    <!-- TABS -->
+    <nav class="tabs">
+      <button type="button" class="tab active" data-tab="mint">MINT</button>
+      <button type="button" class="tab" data-tab="stake">STAKE</button>
+      <button type="button" class="tab" data-tab="about">ABOUT</button>
+      <button type="button" class="tab" data-tab="roadmap">ROADMAP</button>
+    </nav>
 
-  <div id="stage" class="neon-box neon-text">
-    🔥 PARTY IS LIVE 🔥
-  </div>
+    <!-- MINT -->
+    <section class="panel active" id="tab-mint">
+      <h1 class="title">PARTY PUNKS</h1>
 
-  <div id="panels">
-    <div class="panel neon-box">
-      <h2 class="neon-text">ABOUT</h2>
-      <p>
-        <strong>On Chain Party Animals</strong> is a collection of on-chain party survivors.
-        <br><br>
-        No sleep. Heavy bass. Fading memories and questionable decisions —
-        permanently recorded on-chain.
-        <br><br>
-        No fake utility. No roadmap theater.
-        Just the party, the aftermath, and proof that you were there.
+      <p class="tagline">
+        Neon rave degenerates.<br>
+        Pixels. Bass. Chaos on Base.
       </p>
-    </div>
 
-    <div class="panel neon-box">
-      <h2 class="neon-text">ROADMAP</h2>
+      <div class="stats">
+        <div><span>SUPPLY</span><b><span id="minted">–</span> / <span id="max">–</span></b></div>
+        <div><span>PRICE</span><b>0.00005 ETH</b></div>
+        <div><span>NETWORK</span><b>BASE</b></div>
+      </div>
+
+      <!-- QTY -->
+      <div class="qty">
+        <button type="button" id="minus">−</button>
+        <input id="qty" type="number" min="1" step="1" value="1" />
+        <button type="button" id="plus">+</button>
+      </div>
+
+      <div class="total">
+        TOTAL: <span id="totalEth">0.00005</span> ETH
+      </div>
+
+      <div class="actions">
+        <button type="button" id="btnConnect" class="btn ghost">CONNECT</button>
+        <button type="button" id="btnMint" class="btn primary" disabled>MINT</button>
+      </div>
+
+      <div class="links">
+        <a href="https://opensea.io/es/collection/based-acid-punks" target="_blank">OPENSEA</a>
+        <a href="https://basescan.org/address/0x74c5b9A6b91374438FB3ca86a79393285bf6c9F0" target="_blank">BASESCAN</a>
+        <a href="https://x.com/apunkalypsenow" target="_blank">@APUNKALYPSENOW</a>
+        <a href="https://x.com/link__os" target="_blank">@LINK__OS</a>
+      </div>
+
+      <div id="status" class="status">READY.</div>
+    </section>
+
+    <!-- STAKE -->
+    <section class="panel" id="tab-stake">
+      <h2>STAKE PARTY PUNKS</h2>
+      <p>Lock your punks. Earn chaos.</p>
+
+      <div class="stake-box">
+        <input id="stakeTokenId" type="number" placeholder="Token ID" />
+        <button type="button" id="btnStake" class="btn primary">STAKE</button>
+        <button type="button" id="btnUnstake" class="btn ghost">UNSTAKE</button>
+      </div>
+
+      <div id="stakeStatus" class="status">READY.</div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="panel" id="tab-about">
+      <h2>ABOUT</h2>
       <p>
-        <strong>Phase 0 — The Party</strong><br>
-        Mint opens. Website live. No promises.
-        <br><br>
-        <strong>Phase 1 — Survivors</strong><br>
-        Community forms organically. Afterparty mode enabled.
-        <br><br>
-        <strong>Phase 2 — On-Chain Legacy</strong><br>
-        Party moments archived. Optional future drops for survivors only.
+        Party Punks is a high-energy pixel rave.<br>
+        Underground culture, neon rebellion and on-chain chaos.
       </p>
-    </div>
+    </section>
 
-    <div class="panel neon-box">
-      <h2 class="neon-text">LINKS</h2>
-      <p>
-        X / Twitter<br>
-        <a href="https://x.com/APUNKALYPSENOW" target="_blank" class="neon-text">
-          @APUNKALYPSENOW
-        </a>
-        <br><br>
-        Network<br>
-        <span class="neon-text">Base · EVM</span>
-      </p>
-    </div>
-  </div>
+    <!-- ROADMAP -->
+    <section class="panel" id="tab-roadmap">
+      <h2>ROADMAP</h2>
+      <ul>
+        <li>Phase I — Party Mint</li>
+        <li>Phase II — Staking & Rewards</li>
+        <li>Phase III — Expansion & Collabs</li>
+      </ul>
+    </section>
 
-  <div id="crowd"></div>
-</section>
+  </main>
 
-<script>
-const enter=document.getElementById("enter");
-const party=document.getElementById("party");
-const btn=document.getElementById("enterBtn");
-const bg=document.getElementById("bg");
-const crowd=document.getElementById("crowd");
-const status=document.getElementById("status");
-
-btn.onclick=()=>{
-  bg.style.filter="brightness(1.6)";
-  setTimeout(()=>bg.style.filter="brightness(1)",200);
-  enter.classList.add("hidden");
-  party.classList.remove("hidden");
-};
-
-document.addEventListener("mousemove",e=>{
-  const x=(e.clientX/innerWidth)*100;
-  const y=(e.clientY/innerHeight)*100;
-  bg.style.background=
-    `radial-gradient(circle at ${x}% ${y}%, rgba(0,255,255,.55), #000 70%)`;
-});
-
-setInterval(()=>{
-  const r=document.createElement("div");
-  r.className="raver";
-  r.style.left=Math.random()*100+"%";
-  r.style.animationDuration=(2+Math.random()*3)+"s";
-  crowd.appendChild(r);
-  setTimeout(()=>r.remove(),3000);
-},160);
-
-const texts=[
-  "THE FLOOR IS MOVING",
-  "NO SLEEP LEFT",
-  "ONE MORE TRACK",
-  "WHO ARE YOU",
-  "STILL GOING",
-  "BASS TOO HEAVY"
-];
-setInterval(()=>{
-  const bpm=[124,128,132,138,144][Math.floor(Math.random()*5)];
-  const t=texts[Math.floor(Math.random()*texts.length)];
-  status.textContent=`🟢 LIVE · BPM ${bpm} · ${t}`;
-},2800);
-</script>
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
+  <script src="./mint.js"></script>
+  <script src="./staking.js"></script>
 
 </body>
 </html>
 
-</html>
 
 
