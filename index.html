@@ -2,88 +2,86 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Party Animals – LIVE</title>
+<title>On Chain Party Animals — LIVE</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-  margin: 0;
-  background: #050505;
-  color: white;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
+*{box-sizing:border-box}
+body{
+  margin:0; background:#050505; color:#fff; overflow:hidden;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-section {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 0.6s, transform 0.6s;
+/* BACKGROUND */
+#bg{
+  position:fixed; inset:0; z-index:-1;
+  background: radial-gradient(circle at center, rgba(0,255,255,.45), #000 70%);
+  transition: background .12s, filter .2s;
 }
 
-.hidden {
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(0.95);
+/* SCREENS */
+section{
+  position:absolute; inset:0;
+  display:flex; flex-direction:column;
+  justify-content:center; align-items:center;
+  transition: opacity .6s, transform .6s;
 }
+.hidden{opacity:0; pointer-events:none; transform:scale(.96)}
 
-h1 {
-  font-size: 4rem;
-  letter-spacing: 0.25em;
-  text-align: center;
+/* ENTER */
+h1{
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  letter-spacing:.25em; text-align:center;
+  text-shadow:0 0 25px rgba(0,255,255,.7),0 0 70px rgba(0,255,255,.4);
 }
-
-button {
-  margin-top: 2rem;
-  padding: 1.2rem 3.5rem;
-  font-size: 1.3rem;
-  letter-spacing: 0.2em;
-  background: cyan;
-  color: black;
-  border: none;
-  cursor: pointer;
+button{
+  margin-top:2rem; padding:1.2rem 3.6rem;
+  font-size:1.3rem; letter-spacing:.2em;
+  background:cyan; color:#000; border:0; cursor:pointer;
 }
 
 /* PARTY */
-#party {
-  background: radial-gradient(circle at center, rgba(0,255,255,0.4), #000 70%);
+#party{
+  background: radial-gradient(circle at center, rgba(0,255,255,.35), #000 70%);
+}
+header{
+  position:absolute; top:0; width:100%;
+  padding:1rem 2rem; display:flex; justify-content:space-between;
+  font-size:.9rem; opacity:.9;
+}
+#stage{
+  border:4px solid cyan; padding:2rem 4rem;
+  font-size:2rem; letter-spacing:.15em;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 10px cyan}
+  50%{box-shadow:0 0 45px cyan}
+  100%{box-shadow:0 0 10px cyan}
 }
 
-#stage {
-  border: 4px solid cyan;
-  padding: 2rem 4rem;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  animation: pulse 2s infinite;
+/* CROWD */
+#crowd{
+  position:absolute; bottom:0; width:100%; height:45%;
+  overflow:hidden;
 }
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 10px cyan; }
-  50% { box-shadow: 0 0 40px cyan; }
-  100% { box-shadow: 0 0 10px cyan; }
+.raver{
+  position:absolute; bottom:-40px;
+  width:42px; height:42px;
+  border:3px solid magenta; opacity:.7;
+  animation:jump linear infinite;
 }
-
-.raver {
-  position: absolute;
-  bottom: 0;
-  width: 40px;
-  height: 40px;
-  background: magenta;
-  animation: jump 2s linear infinite;
-}
-
-@keyframes jump {
-  from { transform: translateY(40px); opacity: 0; }
-  30% { opacity: 1; }
-  to { transform: translateY(-120px); opacity: 0; }
+@keyframes jump{
+  from{transform:translateY(0); opacity:0}
+  25%{opacity:.8}
+  to{transform:translateY(-160px); opacity:0}
 }
 </style>
 </head>
 
 <body>
+
+<div id="bg"></div>
 
 <section id="enter">
   <h1>ON CHAIN<br>PARTY ANIMALS</h1>
@@ -91,31 +89,63 @@ button {
 </section>
 
 <section id="party" class="hidden">
+  <header>
+    <div>PARTY ANIMALS</div>
+    <div id="status">🟢 LIVE</div>
+  </header>
   <div id="stage">🔥 PARTY IS LIVE 🔥</div>
+  <div id="crowd"></div>
 </section>
 
 <script>
-console.log("INLINE JS LOADED");
+console.log("INLINE JS READY");
 
 const enter = document.getElementById("enter");
 const party = document.getElementById("party");
-const btn = document.getElementById("enterBtn");
+const btn   = document.getElementById("enterBtn");
+const bg    = document.getElementById("bg");
+const crowd = document.getElementById("crowd");
+const status= document.getElementById("status");
 
-btn.addEventListener("click", () => {
-  console.log("CLICK WORKS");
+btn.onclick = () => {
+  bg.style.filter="brightness(1.6)";
+  setTimeout(()=>bg.style.filter="brightness(1)",200);
   enter.classList.add("hidden");
   party.classList.remove("hidden");
+};
 
-  // spawn ravers
-  setInterval(() => {
-    const r = document.createElement("div");
-    r.className = "raver";
-    r.style.left = Math.random() * 100 + "%";
-    party.appendChild(r);
-    setTimeout(() => r.remove(), 2000);
-  }, 200);
+// mouse light
+document.addEventListener("mousemove", e=>{
+  const x=(e.clientX/innerWidth)*100, y=(e.clientY/innerHeight)*100;
+  bg.style.background =
+    `radial-gradient(circle at ${x}% ${y}%, rgba(0,255,255,.55), #000 70%)`;
 });
+
+// crowd spawn (BIG + OBVIOUS)
+setInterval(()=>{
+  const r=document.createElement("div");
+  r.className="raver";
+  r.style.left=Math.random()*100+"%";
+  r.style.animationDuration=(2+Math.random()*3)+"s";
+  crowd.appendChild(r);
+  setTimeout(()=>r.remove(),3000);
+},160);
+
+// status text
+const texts=[
+  "THE FLOOR IS MOVING","NO SLEEP LEFT","ONE MORE TRACK",
+  "WHO ARE YOU","STILL GOING","BASS TOO HEAVY"
+];
+setInterval(()=>{
+  const bpm=[124,128,132,138,144][Math.floor(Math.random()*5)];
+  const t=texts[Math.floor(Math.random()*texts.length)];
+  status.textContent=`🟢 LIVE · BPM ${bpm} · ${t}`;
+},2800);
 </script>
+
+</body>
+</html>
+
 
 </body>
 </html>
