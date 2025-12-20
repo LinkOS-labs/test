@@ -1,126 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>PARTY ANIMALS — TEST VISIBLE</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>On Chain Party Animals</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-* { box-sizing: border-box; }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-body {
-  margin: 0;
-  background: black;
-  color: white;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
-}
-
-/* BARRA ROJA DE TEST */
-#test {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: red;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  font-size: 18px;
-  z-index: 99999;
-}
-
-/* ENTER / PARTY */
-section {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.hidden {
-  display: none;
-}
-
-h1 {
-  font-size: 4rem;
-  letter-spacing: 0.3em;
-  text-align: center;
-}
-
-button {
-  margin-top: 2rem;
-  padding: 1.5rem 4rem;
-  font-size: 1.4rem;
-  background: cyan;
-  color: black;
-  border: none;
-  cursor: pointer;
-}
-
-/* PARTY CONTENT */
-#party {
-  background: radial-gradient(circle at center, #00ffff, #000 70%);
-}
-
-#stage {
-  border: 4px solid yellow;
-  padding: 2rem 4rem;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-
-.raver {
-  position: absolute;
-  bottom: 0;
-  width: 40px;
-  height: 40px;
-  background: magenta;
-  animation: jump 2s linear infinite;
-}
-
-@keyframes jump {
-  from { transform: translateY(40px); opacity: 0; }
-  30% { opacity: 1; }
-  to { transform: translateY(-120px); opacity: 0; }
-}
-</style>
+  <link rel="stylesheet" href="css/style.css?v=1">
 </head>
-
 <body>
 
-<div id="test">🚨 SI VES ESTO, ESTE ES EL ARCHIVO QUE SE PUBLICA 🚨</div>
+<div id="bg"></div>
 
 <section id="enter">
-  <h1>ENTER PARTY</h1>
-  <button id="btn">CLICK HERE</button>
+  <h1>ON CHAIN<br>PARTY ANIMALS</h1>
+  <button id="enterBtn">ENTER THE PARTY</button>
+  <p class="hint">best experienced at night</p>
 </section>
 
 <section id="party" class="hidden">
-  <div id="stage">🔥 THIS IS THE PARTY 🔥</div>
+  <header>
+    <div class="logo">PARTY ANIMALS</div>
+    <div id="status">🟢 LIVE</div>
+  </header>
+
+  <main id="stage">
+    <div class="screen">THE PARTY IS LIVE</div>
+  </main>
+
+  <div id="crowd"></div>
 </section>
 
-<script>
-const btn = document.getElementById("btn");
-const enter = document.getElementById("enter");
-const party = document.getElementById("party");
-
-btn.onclick = () => {
-  enter.classList.add("hidden");
-  party.classList.remove("hidden");
-
-  // spawn ravers
-  setInterval(() => {
-    const r = document.createElement("div");
-    r.className = "raver";
-    r.style.left = Math.random() * 100 + "%";
-    party.appendChild(r);
-    setTimeout(() => r.remove(), 2000);
-  }, 200);
-};
-</script>
-
+<script src="js/main.js?v=1"></script>
 </body>
 </html>
+
