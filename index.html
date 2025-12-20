@@ -1,40 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>On Chain Party Animals</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Party Animals – LIVE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  background: #050505;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
 
-  <link rel="stylesheet" href="css/style.css?v=1">
+section {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.95);
+}
+
+h1 {
+  font-size: 4rem;
+  letter-spacing: 0.25em;
+  text-align: center;
+}
+
+button {
+  margin-top: 2rem;
+  padding: 1.2rem 3.5rem;
+  font-size: 1.3rem;
+  letter-spacing: 0.2em;
+  background: cyan;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+/* PARTY */
+#party {
+  background: radial-gradient(circle at center, rgba(0,255,255,0.4), #000 70%);
+}
+
+#stage {
+  border: 4px solid cyan;
+  padding: 2rem 4rem;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px cyan; }
+  50% { box-shadow: 0 0 40px cyan; }
+  100% { box-shadow: 0 0 10px cyan; }
+}
+
+.raver {
+  position: absolute;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  background: magenta;
+  animation: jump 2s linear infinite;
+}
+
+@keyframes jump {
+  from { transform: translateY(40px); opacity: 0; }
+  30% { opacity: 1; }
+  to { transform: translateY(-120px); opacity: 0; }
+}
+</style>
 </head>
-<body>
 
-<div id="bg"></div>
+<body>
 
 <section id="enter">
   <h1>ON CHAIN<br>PARTY ANIMALS</h1>
   <button id="enterBtn">ENTER THE PARTY</button>
-  <p class="hint">best experienced at night</p>
 </section>
 
 <section id="party" class="hidden">
-  <header>
-    <div class="logo">PARTY ANIMALS</div>
-    <div id="status">🟢 LIVE</div>
-  </header>
-
-  <main id="stage">
-    <div class="screen">THE PARTY IS LIVE</div>
-  </main>
-
-  <div id="crowd"></div>
+  <div id="stage">🔥 PARTY IS LIVE 🔥</div>
 </section>
 
-<script src="js/main.js?v=1"></script>
+<script>
+console.log("INLINE JS LOADED");
+
+const enter = document.getElementById("enter");
+const party = document.getElementById("party");
+const btn = document.getElementById("enterBtn");
+
+btn.addEventListener("click", () => {
+  console.log("CLICK WORKS");
+  enter.classList.add("hidden");
+  party.classList.remove("hidden");
+
+  // spawn ravers
+  setInterval(() => {
+    const r = document.createElement("div");
+    r.className = "raver";
+    r.style.left = Math.random() * 100 + "%";
+    party.appendChild(r);
+    setTimeout(() => r.remove(), 2000);
+  }, 200);
+});
+</script>
+
 </body>
 </html>
 
