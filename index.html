@@ -2,79 +2,152 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>On Chain Party Animals — LIVE</title>
+<title>On Chain Party Animals</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+/* ================== CORE ================== */
 *{box-sizing:border-box}
 body{
-  margin:0; background:#050505; color:#fff; overflow:hidden;
-  font-family: Arial, Helvetica, sans-serif;
+  margin:0;
+  background:#050505;
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+  overflow:hidden;
 }
 
-/* BACKGROUND */
+/* ================== NEON SYSTEM ================== */
+:root{
+  --neon-cyan:#00ffff;
+  --neon-magenta:#ff00ff;
+}
+
+.neon-box{
+  border:2px solid var(--neon-cyan);
+  box-shadow:
+    0 0 10px rgba(0,255,255,.6),
+    0 0 30px rgba(0,255,255,.35);
+}
+
+.neon-text{
+  color:var(--neon-cyan);
+  text-shadow:
+    0 0 6px rgba(0,255,255,.9),
+    0 0 18px rgba(0,255,255,.6),
+    0 0 40px rgba(0,255,255,.35);
+}
+
+/* ================== BACKGROUND ================== */
 #bg{
-  position:fixed; inset:0; z-index:-1;
-  background: radial-gradient(circle at center, rgba(0,255,255,.45), #000 70%);
-  transition: background .12s, filter .2s;
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:
+    radial-gradient(circle at center, rgba(0,255,255,.45), #000 70%);
+  transition:background .15s, filter .2s;
 }
 
-/* SCREENS */
+/* ================== SCREENS ================== */
 section{
-  position:absolute; inset:0;
-  display:flex; flex-direction:column;
-  justify-content:center; align-items:center;
-  transition: opacity .6s, transform .6s;
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  transition:opacity .6s, transform .6s;
 }
-.hidden{opacity:0; pointer-events:none; transform:scale(.96)}
-
-/* ENTER */
-h1{
-  font-size: clamp(3.5rem, 8vw, 7rem);
-  letter-spacing:.25em; text-align:center;
-  text-shadow:0 0 25px rgba(0,255,255,.7),0 0 70px rgba(0,255,255,.4);
-}
-button{
-  margin-top:2rem; padding:1.2rem 3.6rem;
-  font-size:1.3rem; letter-spacing:.2em;
-  background:cyan; color:#000; border:0; cursor:pointer;
+.hidden{
+  opacity:0;
+  pointer-events:none;
+  transform:scale(.96);
 }
 
-/* PARTY */
-#party{
-  background: radial-gradient(circle at center, rgba(0,255,255,.35), #000 70%);
+/* ================== ENTER ================== */
+#enter h1{
+  font-size:clamp(3.5rem,8vw,7rem);
+  letter-spacing:.25em;
+  text-align:center;
 }
-header{
-  position:absolute; top:0; width:100%;
-  padding:1rem 2rem; display:flex; justify-content:space-between;
-  font-size:.9rem; opacity:.9;
+#enter button{
+  margin-top:2rem;
+  padding:1.2rem 3.6rem;
+  font-size:1.3rem;
+  letter-spacing:.2em;
+  background:transparent;
+  cursor:pointer;
 }
+
+/* ================== PARTY ================== */
+#party header{
+  position:absolute;
+  top:0;
+  width:100%;
+  padding:1rem 2rem;
+  display:flex;
+  justify-content:space-between;
+  font-size:.9rem;
+}
+
 #stage{
-  border:4px solid cyan; padding:2rem 4rem;
-  font-size:2rem; letter-spacing:.15em;
+  padding:2rem 4rem;
+  font-size:2rem;
+  letter-spacing:.15em;
+  margin-bottom:2rem;
   animation:pulse 2s infinite;
 }
+
 @keyframes pulse{
   0%{box-shadow:0 0 10px cyan}
   50%{box-shadow:0 0 45px cyan}
   100%{box-shadow:0 0 10px cyan}
 }
 
-/* CROWD */
+/* ================== CONTENT PANELS ================== */
+#panels{
+  display:flex;
+  gap:1.5rem;
+  width:90%;
+  justify-content:center;
+  margin-bottom:2rem;
+}
+
+.panel{
+  flex:1;
+  padding:1.5rem;
+  font-size:.9rem;
+  line-height:1.5;
+}
+
+.panel h2{
+  margin-top:0;
+  font-size:1.2rem;
+  letter-spacing:.15em;
+}
+
+/* ================== CROWD ================== */
 #crowd{
-  position:absolute; bottom:0; width:100%; height:45%;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:35%;
   overflow:hidden;
 }
+
 .raver{
-  position:absolute; bottom:-40px;
-  width:42px; height:42px;
-  border:3px solid magenta; opacity:.7;
+  position:absolute;
+  bottom:-40px;
+  width:42px;
+  height:42px;
+  border:3px solid var(--neon-magenta);
+  opacity:.7;
   animation:jump linear infinite;
 }
+
 @keyframes jump{
-  from{transform:translateY(0); opacity:0}
+  from{transform:translateY(0);opacity:0}
   25%{opacity:.8}
-  to{transform:translateY(-160px); opacity:0}
+  to{transform:translateY(-160px);opacity:0}
 }
 </style>
 </head>
@@ -83,45 +156,95 @@ header{
 
 <div id="bg"></div>
 
+<!-- ENTER -->
 <section id="enter">
-  <h1>ON CHAIN<br>PARTY ANIMALS</h1>
-  <button id="enterBtn">ENTER THE PARTY</button>
+  <h1 class="neon-text">ON CHAIN<br>PARTY ANIMALS</h1>
+  <button id="enterBtn" class="neon-box neon-text">ENTER THE PARTY</button>
 </section>
 
+<!-- PARTY -->
 <section id="party" class="hidden">
   <header>
-    <div>PARTY ANIMALS</div>
-    <div id="status">🟢 LIVE</div>
+    <div class="neon-text">PARTY ANIMALS</div>
+    <div id="status" class="neon-text">🟢 LIVE</div>
   </header>
-  <div id="stage">🔥 PARTY IS LIVE 🔥</div>
+
+  <div id="stage" class="neon-box neon-text">
+    🔥 PARTY IS LIVE 🔥
+  </div>
+
+  <div id="panels">
+    <div class="panel neon-box">
+      <h2 class="neon-text">ABOUT</h2>
+      <p>
+        <strong>On Chain Party Animals</strong> is a collection of on-chain party
+        survivors.<br><br>
+        No sleep. Heavy bass. Fading memories and questionable decisions —
+        permanently recorded on-chain.<br><br>
+        No fake utility. No roadmap theater.
+        Just the party, the aftermath, and proof that you were there.
+      </p>
+    </div>
+
+    <div class="panel neon-box">
+      <h2 class="neon-text">ROADMAP</h2>
+      <p>
+        <strong>Phase 0 — The Party</strong><br>
+        Mint opens. Website live. No promises.<br><br>
+
+        <strong>Phase 1 — Survivors</strong><br>
+        Community forms organically. Afterparty mode enabled.<br><br>
+
+        <strong>Phase 2 — On-Chain Legacy</strong><br>
+        Party moments archived. Optional future drops for survivors only.
+      </p>
+    </div>
+
+    <div class="panel neon-box">
+      <h2 class="neon-text">LINKS</h2>
+      <p>
+        X / Twitter<br>
+        <a href="https://x.com/APUNKALYPSENOW" target="_blank" class="neon-text">
+          @APUNKALYPSENOW
+        </a><br><br>
+
+        Website<br>
+        <span class="neon-text">linkos-labs.github.io</span><br><br>
+
+        Network<br>
+        <span class="neon-text">Base · EVM</span>
+      </p>
+    </div>
+  </div>
+
   <div id="crowd"></div>
 </section>
 
 <script>
-console.log("INLINE JS READY");
+/* ================== LOGIC ================== */
+const enter=document.getElementById("enter");
+const party=document.getElementById("party");
+const btn=document.getElementById("enterBtn");
+const bg=document.getElementById("bg");
+const crowd=document.getElementById("crowd");
+const status=document.getElementById("status");
 
-const enter = document.getElementById("enter");
-const party = document.getElementById("party");
-const btn   = document.getElementById("enterBtn");
-const bg    = document.getElementById("bg");
-const crowd = document.getElementById("crowd");
-const status= document.getElementById("status");
-
-btn.onclick = () => {
+btn.onclick=()=>{
   bg.style.filter="brightness(1.6)";
   setTimeout(()=>bg.style.filter="brightness(1)",200);
   enter.classList.add("hidden");
   party.classList.remove("hidden");
 };
 
-// mouse light
-document.addEventListener("mousemove", e=>{
-  const x=(e.clientX/innerWidth)*100, y=(e.clientY/innerHeight)*100;
-  bg.style.background =
+/* mouse neon light */
+document.addEventListener("mousemove",e=>{
+  const x=(e.clientX/innerWidth)*100;
+  const y=(e.clientY/innerHeight)*100;
+  bg.style.background=
     `radial-gradient(circle at ${x}% ${y}%, rgba(0,255,255,.55), #000 70%)`;
 });
 
-// crowd spawn (BIG + OBVIOUS)
+/* crowd spawn */
 setInterval(()=>{
   const r=document.createElement("div");
   r.className="raver";
@@ -131,10 +254,14 @@ setInterval(()=>{
   setTimeout(()=>r.remove(),3000);
 },160);
 
-// status text
+/* status text */
 const texts=[
-  "THE FLOOR IS MOVING","NO SLEEP LEFT","ONE MORE TRACK",
-  "WHO ARE YOU","STILL GOING","BASS TOO HEAVY"
+  "THE FLOOR IS MOVING",
+  "NO SLEEP LEFT",
+  "ONE MORE TRACK",
+  "WHO ARE YOU",
+  "STILL GOING",
+  "BASS TOO HEAVY"
 ];
 setInterval(()=>{
   const bpm=[124,128,132,138,144][Math.floor(Math.random()*5)];
