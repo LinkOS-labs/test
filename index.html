@@ -1,116 +1,230 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Party Punks</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+:root {
+  --acid-yellow:#ffe600;
+  --electric-purple:#7a00ff;
+  --toxic-pink:#ff005c;
+  --deep-blue:#050014;
+  --panel-black:#0b001a;
+  --text-main:#f6f2ff;
+  --text-muted:#b8a9ff;
+}
 
-  <!-- RARE / PREMIUM FONTS -->
-  <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Syne:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+* { box-sizing:border-box; }
 
-  <link rel="stylesheet" href="./style.css" />
-</head>
+html,body {
+  margin:0;
+  background:var(--deep-blue);
+  color:var(--text-main);
+  font-family:"Space Grotesk", sans-serif;
+}
 
-<body>
+/* ===== BACKGROUND ===== */
+.bg-banner {
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 30%, #ff005c44, transparent 45%),
+    radial-gradient(circle at 80% 20%, #7a00ff44, transparent 40%),
+    radial-gradient(circle at 50% 80%, #ffe60033, transparent 45%);
+  filter:blur(80px);
+  z-index:-3;
+}
 
-  <!-- BACKGROUND -->
-  <div class="bg-banner"></div>
-  <div class="bg-noise"></div>
-  <div class="bg-vignette"></div>
+.bg-noise {
+  position:fixed;
+  inset:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  z-index:-2;
+}
 
-  <main class="frame">
+.bg-vignette {
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle, transparent 40%, #000 90%);
+  z-index:-1;
+}
 
-    <!-- TABS -->
-    <nav class="tabs">
-      <button type="button" class="tab active" data-tab="mint">MINT</button>
-      <button type="button" class="tab" data-tab="stake">STAKE</button>
-      <button type="button" class="tab" data-tab="about">ABOUT</button>
-      <button type="button" class="tab" data-tab="roadmap">ROADMAP</button>
-    </nav>
+/* ===== LAYOUT ===== */
+.frame {
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:70px 20px;
+}
 
-    <!-- MINT -->
-    <section class="panel active" id="tab-mint">
-      <h1 class="title">PARTY PUNKS</h1>
+/* ===== TABS ===== */
+.tabs {
+  display:flex;
+  gap:22px;
+  margin-bottom:50px;
+}
 
-      <p class="tagline">
-        Neon rave degenerates.<br>
-        Pixels. Bass. Chaos on Base.
-      </p>
+.tab {
+  border:2px solid var(--toxic-pink);
+  background:transparent;
+  color:var(--toxic-pink);
+  padding:12px 28px;
+  font-family:"JetBrains Mono", monospace;
+  letter-spacing:.25em;
+  cursor:pointer;
+  transition:.25s;
+}
 
-      <div class="stats">
-        <div><span>SUPPLY</span><b><span id="minted">–</span> / <span id="max">–</span></b></div>
-        <div><span>PRICE</span><b>0.00005 ETH</b></div>
-        <div><span>NETWORK</span><b>BASE</b></div>
-      </div>
+.tab:hover {
+  background:var(--toxic-pink);
+  color:#000;
+}
 
-      <!-- QTY -->
-      <div class="qty">
-        <button type="button" id="minus">−</button>
-        <input id="qty" type="number" min="1" step="1" value="1" />
-        <button type="button" id="plus">+</button>
-      </div>
+.tab.active {
+  background:linear-gradient(135deg,var(--toxic-pink),var(--acid-yellow));
+  color:#000;
+  border:none;
+}
 
-      <div class="total">
-        TOTAL: <span id="totalEth">0.00005</span> ETH
-      </div>
+/* ===== PANELS ===== */
+.panel {
+  display:none;
+  max-width:920px;
+  width:100%;
+  padding:70px 50px;
+  background:
+    linear-gradient(180deg,#14002e,#070012);
+  border:2px solid #ff005c55;
+  box-shadow:
+    0 0 80px #ff005c33,
+    inset 0 0 40px #000;
+  text-align:center;
+}
 
-      <div class="actions">
-        <button type="button" id="btnConnect" class="btn ghost">CONNECT</button>
-        <button type="button" id="btnMint" class="btn primary" disabled>MINT</button>
-      </div>
+.panel.active { display:block; }
 
-      <div class="links">
-        <a href="https://opensea.io/es/collection/based-acid-punks" target="_blank">OPENSEA</a>
-        <a href="https://basescan.org/address/0x74c5b9A6b91374438FB3ca86a79393285bf6c9F0" target="_blank">BASESCAN</a>
-        <a href="https://x.com/apunkalypsenow" target="_blank">@APUNKALYPSENOW</a>
-        <a href="https://x.com/link__os" target="_blank">@LINK__OS</a>
-      </div>
+/* ===== TITLE ===== */
+.title {
+  font-family:"Rubik Glitch", cursive;
+  font-size:clamp(70px, 11vw, 150px);
+  background:linear-gradient(
+    90deg,
+    var(--acid-yellow),
+    var(--toxic-pink),
+    var(--electric-purple)
+  );
+  -webkit-background-clip:text;
+  color:transparent;
+  text-shadow:
+    0 0 25px #ff005caa,
+    0 0 60px #7a00ffaa;
+}
 
-      <div id="status" class="status">READY.</div>
-    </section>
+/* ===== TAGLINE ===== */
+.tagline {
+  margin-top:10px;
+  font-family:"JetBrains Mono", monospace;
+  color:var(--text-muted);
+}
 
-    <!-- STAKE -->
-    <section class="panel" id="tab-stake">
-      <h2>STAKE PARTY PUNKS</h2>
-      <p>Lock your punks. Earn chaos.</p>
+/* ===== STATS ===== */
+.stats {
+  display:flex;
+  justify-content:center;
+  gap:50px;
+  margin:45px 0;
+}
 
-      <div class="stake-box">
-        <input id="stakeTokenId" type="number" placeholder="Token ID" />
-        <button type="button" id="btnStake" class="btn primary">STAKE</button>
-        <button type="button" id="btnUnstake" class="btn ghost">UNSTAKE</button>
-      </div>
+.stats span {
+  font-size:12px;
+  letter-spacing:.3em;
+  color:var(--text-muted);
+}
 
-      <div id="stakeStatus" class="status">READY.</div>
-    </section>
+/* ===== QTY ===== */
+.qty {
+  display:flex;
+  justify-content:center;
+  gap:16px;
+}
 
-    <!-- ABOUT -->
-    <section class="panel" id="tab-about">
-      <h2>ABOUT</h2>
-      <p>
-        Party Punks is a high-energy pixel rave.<br>
-        Underground culture, neon rebellion and on-chain chaos.
-      </p>
-    </section>
+.qty button,
+.qty input {
+  background:#000;
+  border:2px solid var(--electric-purple);
+  color:var(--electric-purple);
+  width:52px;
+  height:52px;
+  text-align:center;
+  font-family:"JetBrains Mono", monospace;
+}
 
-    <!-- ROADMAP -->
-    <section class="panel" id="tab-roadmap">
-      <h2>ROADMAP</h2>
-      <ul>
-        <li>Phase I — Party Mint</li>
-        <li>Phase II — Staking & Rewards</li>
-        <li>Phase III — Expansion & Collabs</li>
-      </ul>
-    </section>
+/* ===== BUTTONS ===== */
+.actions {
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  margin-top:35px;
+}
 
-  </main>
+.btn {
+  padding:18px 40px;
+  border:2px solid var(--acid-yellow);
+  background:transparent;
+  color:var(--acid-yellow);
+  font-family:"JetBrains Mono", monospace;
+  letter-spacing:.25em;
+  cursor:pointer;
+  transition:.25s;
+}
 
-  <!-- SCRIPTS -->
-  <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
-  <script src="./mint.js"></script>
-  <script src="./staking.js"></script>
+.btn.primary {
+  background:linear-gradient(135deg,var(--acid-yellow),var(--toxic-pink));
+  color:#000;
+  border:none;
+}
 
-</body>
-</html>
+.btn:hover {
+  transform:translateY(-2px);
+  box-shadow:0 0 35px var(--acid-yellow);
+}
+
+/* ===== LINKS ===== */
+.links {
+  margin-top:45px;
+  display:flex;
+  gap:26px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.links a {
+  color:var(--text-muted);
+  text-decoration:none;
+  font-family:"JetBrains Mono", monospace;
+}
+
+.links a:hover {
+  color:var(--acid-yellow);
+}
+
+/* ===== STATUS ===== */
+.status {
+  margin-top:30px;
+  font-family:"JetBrains Mono", monospace;
+  opacity:.75;
+}
+
+/* ===== STAKE ===== */
+.stake-box {
+  display:flex;
+  justify-content:center;
+  gap:20px;
+}
+
+.stake-box input {
+  padding:16px;
+  background:#000;
+  border:2px solid var(--toxic-pink);
+  color:var(--toxic-pink);
+}
+
 
 
 
