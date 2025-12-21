@@ -11,7 +11,6 @@
 
 html, body {
   margin:0;
-  min-height:100%;
   background:var(--deep-blue);
   color:var(--text-main);
   font-family:"JetBrains Mono", monospace;
@@ -42,22 +41,22 @@ body::after {
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;
   padding:80px 24px;
 }
 
 /* TABS */
 .tabs {
   display:flex;
-  gap:22px;
   flex-wrap:wrap;
+  gap:14px;
   justify-content:center;
+  margin-bottom:40px;
 }
 .tab {
   border:2px solid var(--toxic-pink);
   background:none;
   color:var(--toxic-pink);
-  padding:12px 28px;
+  padding:10px 22px;
   cursor:pointer;
 }
 .tab.active {
@@ -69,7 +68,8 @@ body::after {
 .panel {
   display:none;
   max-width:960px;
-  padding:70px 50px;
+  width:100%;
+  padding:60px 40px;
   background:#0b001a;
   border:2px solid #ff005c55;
   text-align:center;
@@ -79,8 +79,8 @@ body::after {
 /* TITLE */
 .title {
   font-family:"Bricolage Grotesque", sans-serif;
-  font-weight:800;
   font-size:clamp(90px, 14vw, 220px);
+  font-weight:800;
   background:linear-gradient(120deg,#ffe600,#ff005c,#7a00ff);
   -webkit-background-clip:text;
   color:transparent;
@@ -88,14 +88,14 @@ body::after {
 
 /* MANIFESTO */
 .manifesto {
-  margin:30px 0;
+  margin:24px 0 40px;
   letter-spacing:.3em;
   color:var(--text-muted);
 }
 
 /* BUTTONS */
 .btn {
-  padding:18px 40px;
+  padding:16px 36px;
   border:2px solid var(--acid-yellow);
   background:none;
   color:var(--acid-yellow);
@@ -105,21 +105,69 @@ body::after {
   color:#000;
 }
 
-/* LIVE STATS */
+/* STATS */
+.stats {
+  display:flex;
+  gap:40px;
+  justify-content:center;
+  margin:40px 0;
+}
+
+/* LIVE */
 .live-stats {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
   gap:30px;
-  margin-top:40px;
 }
 .stat {
-  padding:24px;
   background:#000;
+  padding:24px;
   border:1px solid #ff005c55;
 }
 .stat b {
   color:var(--acid-yellow);
   font-size:22px;
+}
+
+/* ACTIVITY */
+.activity-feed {
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.activity-item {
+  background:#000;
+  border:1px solid #ff005c44;
+  padding:18px;
+}
+.type.mint { color:#ffe600; }
+.type.sale { color:#00ffcc; }
+.type.transfer { color:#7a00ff; }
+
+/* PARTY POINTS */
+.points-box {
+  background:#000;
+  padding:30px;
+  border:1px solid #7a00ff55;
+}
+.points-status {
+  margin-top:24px;
+  border:1px dashed #ffe60088;
+  padding:12px;
+}
+
+/* ROADMAP */
+.roadmap-graphic {
+  display:flex;
+  flex-direction:column;
+  gap:40px;
+}
+.dot {
+  width:14px;
+  height:14px;
+  background:var(--acid-yellow);
+  border-radius:50%;
+  margin:0 auto 10px;
 }
 
 /* GALLERY */
