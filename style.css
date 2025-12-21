@@ -19,7 +19,6 @@ html, body {
 }
 
 /* ===== BACKGROUND SAFE ===== */
-
 body::before {
   content:"";
   position:fixed;
@@ -48,7 +47,6 @@ body::after {
 }
 
 /* ===== LAYOUT ===== */
-
 .frame {
   min-height:100vh;
   display:flex;
@@ -59,7 +57,6 @@ body::after {
 }
 
 /* ===== TABS ===== */
-
 .tabs {
   display:flex;
   gap:22px;
@@ -76,6 +73,12 @@ body::after {
   font-family:"JetBrains Mono", monospace;
   letter-spacing:.25em;
   cursor:pointer;
+  transition:.25s;
+}
+
+.tab:hover {
+  transform:translateY(-1px);
+  box-shadow:0 0 18px var(--toxic-pink);
 }
 
 .tab.active {
@@ -85,7 +88,6 @@ body::after {
 }
 
 /* ===== PANELS ===== */
-
 .panel {
   display:none;
   max-width:960px;
@@ -100,12 +102,12 @@ body::after {
 .panel.active { display:block; }
 
 /* ===== TITLE ===== */
-
 .title {
-  font-family:"Sora", sans-serif;
-  font-weight:800;
-  font-size:clamp(78px, 11vw, 170px);
-  letter-spacing:.12em;
+  font-family:"Clash Display", sans-serif;
+  font-weight:700;
+  font-size:clamp(82px, 12vw, 190px);
+  letter-spacing:.1em;
+  text-transform:uppercase;
   background:linear-gradient(
     90deg,
     var(--acid-yellow),
@@ -114,17 +116,38 @@ body::after {
   );
   -webkit-background-clip:text;
   color:transparent;
+  text-shadow:
+    0 0 30px #ff005c88,
+    0 0 70px #7a00ff55;
+  animation:titlePulse 6s ease-in-out infinite;
 }
 
-/* ===== TEXT ===== */
+@keyframes titlePulse {
+  0% { text-shadow:0 0 30px #ff005c88; }
+  50% { text-shadow:0 0 55px #7a00ffaa; }
+  100% { text-shadow:0 0 30px #ff005c88; }
+}
 
+/* ===== MANIFESTO ===== */
+.manifesto {
+  margin:30px 0 50px;
+  font-family:"JetBrains Mono", monospace;
+  letter-spacing:.35em;
+  font-size:13px;
+  color:var(--text-muted);
+  text-align:center;
+}
+
+.manifesto p { margin:6px 0; }
+.manifesto b { color:var(--acid-yellow); }
+
+/* ===== TEXT ===== */
 .tagline, .panel p, .faq, .roadmap-graphic {
   text-align:center;
   color:var(--text-muted);
 }
 
 /* ===== STATS ===== */
-
 .stats {
   display:flex;
   justify-content:center;
@@ -133,8 +156,25 @@ body::after {
   flex-wrap:wrap;
 }
 
-/* ===== BUTTONS ===== */
+/* ===== QTY ===== */
+.qty {
+  display:flex;
+  justify-content:center;
+  gap:16px;
+}
 
+.qty button,
+.qty input {
+  background:#000;
+  border:2px solid var(--electric-purple);
+  color:var(--electric-purple);
+  width:52px;
+  height:52px;
+  text-align:center;
+  font-family:"JetBrains Mono", monospace;
+}
+
+/* ===== BUTTONS ===== */
 .actions {
   display:flex;
   gap:30px;
@@ -148,16 +188,36 @@ body::after {
   background:transparent;
   color:var(--acid-yellow);
   font-family:"JetBrains Mono", monospace;
+  letter-spacing:.25em;
+  cursor:pointer;
 }
 
-/* ===== FAQ ===== */
+.btn.primary {
+  background:linear-gradient(135deg,var(--acid-yellow),var(--toxic-pink));
+  color:#000;
+  border:none;
+}
+
+.btn:hover {
+  transform:translateY(-2px);
+  box-shadow:
+    0 0 20px var(--acid-yellow),
+    0 0 40px #ff005c55;
+}
+
+/* ===== STAKE / FAQ ===== */
+.stake-box {
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
 
 .faq ul {
   list-style-position:inside;
 }
 
 /* ===== ROADMAP GRAPHIC ===== */
-
 .roadmap-graphic {
   margin-top:50px;
   display:flex;
@@ -197,7 +257,6 @@ body::after {
 }
 
 /* ===== GALLERY ===== */
-
 .gallery {
   display:grid;
   grid-template-columns:repeat(auto-fill, minmax(180px, 1fr));
@@ -212,7 +271,7 @@ body::after {
 }
 
 /* ===== MOBILE ===== */
-
 @media (max-width:700px) {
   .panel { padding:50px 24px; }
+  .title { font-size:clamp(60px, 18vw, 140px); }
 }
