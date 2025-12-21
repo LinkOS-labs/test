@@ -6,17 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- FONTS -->
-  <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-
-  <!-- BACKGROUND LAYERS -->
-  <div class="bg-banner"></div>
-  <div class="bg-noise"></div>
-  <div class="bg-vignette"></div>
 
   <main class="frame">
 
@@ -26,6 +21,7 @@
       <button class="tab" data-tab="stake">STAKE</button>
       <button class="tab" data-tab="about">ABOUT</button>
       <button class="tab" data-tab="roadmap">ROADMAP</button>
+      <button class="tab" data-tab="gallery">GALLERY</button>
     </nav>
 
     <!-- MINT -->
@@ -33,7 +29,7 @@
       <h1 class="title">PARTY PUNKS</h1>
 
       <p class="tagline">
-        Rave degenerates.<br>
+        Psychedelic degens.<br>
         Pixels, bass & chaos on Base.
       </p>
 
@@ -49,20 +45,9 @@
         <button id="plus">+</button>
       </div>
 
-      <div class="total">
-        TOTAL: <span id="totalEth">0.00005</span> ETH
-      </div>
-
       <div class="actions">
         <button id="btnConnect" class="btn ghost">CONNECT</button>
         <button id="btnMint" class="btn primary" disabled>MINT</button>
-      </div>
-
-      <div class="links">
-        <a href="#" target="_blank">OPENSEA</a>
-        <a href="#" target="_blank">BASESCAN</a>
-        <a href="#" target="_blank">@APUNKALYPSENOW</a>
-        <a href="#" target="_blank">@LINK__OS</a>
       </div>
 
       <div id="status" class="status">READY.</div>
@@ -71,7 +56,7 @@
     <!-- STAKE -->
     <section class="panel" id="tab-stake">
       <h2>STAKE PARTY PUNKS</h2>
-      <p>Lock your punks. Earn chaos.</p>
+      <p>Stake your NFTs and accumulate Party Points.</p>
 
       <div class="stake-box">
         <input id="stakeTokenId" type="number" placeholder="Token ID" />
@@ -79,31 +64,84 @@
         <button id="btnUnstake" class="btn ghost">UNSTAKE</button>
       </div>
 
-      <div id="stakeStatus" class="status">READY.</div>
+      <div class="faq">
+        <h3>HOW STAKING WORKS</h3>
+        <ul>
+          <li>Stake your Party Punks to earn <b>Party Points</b>.</li>
+          <li>Points are accumulated over time while staked.</li>
+          <li>Unstake anytime — points are preserved.</li>
+          <li>Higher rarity NFTs may receive boosted rewards.</li>
+        </ul>
+
+        <h3>REWARDS</h3>
+        <ul>
+          <li>🎁 Premium surprise airdrops.</li>
+          <li>🎉 Party Points usable for future developments.</li>
+          <li>🧬 Access to experimental features & drops.</li>
+        </ul>
+      </div>
     </section>
 
     <!-- ABOUT -->
     <section class="panel" id="tab-about">
-      <h2>ABOUT</h2>
+      <h2>ABOUT PARTY PUNKS</h2>
       <p>
-        Party Punks is an underground pixel rave.<br>
-        Neon rebellion, punk energy and on-chain culture.
+        Party Punks is a collection of psychedelic, super-degen NFTs.<br>
+        Completely original creations, built for underground culture and chaos.
+      </p>
+      <p>
+        Inspired by the legendary CryptoPunks, with deep respect to
+        <b>Larva Labs</b> for pioneering the space.
       </p>
     </section>
 
     <!-- ROADMAP -->
     <section class="panel" id="tab-roadmap">
       <h2>ROADMAP</h2>
-      <ul>
-        <li>Phase I — Mint</li>
-        <li>Phase II — Staking</li>
-        <li>Phase III — Expansion</li>
-      </ul>
+
+      <div class="roadmap">
+        <div class="phase">
+          <h3>PHASE 1</h3>
+          <p>
+            Development, marketing & community building.<br>
+            Initial mint release.
+          </p>
+          <p><b>Mint price:</b> 0.00005 ETH</p>
+          <p><b>Supply:</b> 5,000 units</p>
+        </div>
+
+        <div class="phase">
+          <h3>PHASE 2</h3>
+          <p>
+            Supply expansion & ecosystem growth.<br>
+            Staking activation and rewards rollout.
+          </p>
+          <p><b>Mint price:</b> 0.0001 ETH</p>
+          <p><b>Total supply:</b> 15,000 units</p>
+        </div>
+
+        <div class="phase">
+          <h3>PHASE 3</h3>
+          <p>
+            Gallery launch & long-term development.<br>
+            New utilities, collaborations and experiments.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="panel" id="tab-gallery">
+      <h2>GALLERY</h2>
+      <p>
+        A curated gallery of Party Punks.<br>
+        Final layout and contract integration coming soon.
+      </p>
     </section>
 
   </main>
 
-  <!-- TAB SCRIPT -->
+  <!-- TABS SCRIPT -->
   <script>
     const tabs = document.querySelectorAll(".tab");
     const panels = document.querySelectorAll(".panel");
@@ -119,10 +157,10 @@
     });
   </script>
 
-  <!-- YOUR LOGIC -->
   <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
   <script src="./mint.js"></script>
   <script src="./staking.js"></script>
 
 </body>
 </html>
+
