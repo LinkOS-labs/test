@@ -1,22 +1,20 @@
-const LIVE_CONFIG = {
-  CONTRACT: null, // put address here later
+const LIVE = {
+  CONTRACT: null,
   REFRESH: 60000
 };
 
-function setComingSoon() {
+function comingSoon() {
   ["liveHolders","liveMinted","liveFloor","liveVolume"]
     .forEach(id => document.getElementById(id).textContent = "COMING SOON");
 }
 
-async function updateLive() {
-  if (!LIVE_CONFIG.CONTRACT) {
-    setComingSoon();
+function updateLive() {
+  if (!LIVE.CONTRACT) {
+    comingSoon();
     return;
   }
-
-  // When contract is live:
-  // fetch BaseScan / marketplace data here
+  // Hook BaseScan / marketplace here when ready
 }
 
 updateLive();
-setInterval(updateLive, LIVE_CONFIG.REFRESH);
+setInterval(updateLive, LIVE.REFRESH);
