@@ -10,40 +10,48 @@
 
 * { box-sizing:border-box; }
 
-html,body {
+html, body {
   margin:0;
+  min-height:100%;
   background:var(--deep-blue);
   color:var(--text-main);
   font-family:"Space Grotesk", sans-serif;
+  position:relative;
+  overflow-x:hidden;
 }
 
-/* BACKGROUND */
-.bg-banner {
+/* ================= BACKGROUND (RENDER SAFE) ================= */
+
+body::before {
+  content:"";
   position:fixed;
-  inset:0;
+  inset:-20%;
   background:
-    radial-gradient(circle at 20% 30%, #ff005c55, transparent 45%),
-    radial-gradient(circle at 80% 20%, #7a00ff55, transparent 40%),
-    radial-gradient(circle at 50% 80%, #ffe60044, transparent 45%);
-  filter:blur(90px);
-  z-index:-3;
-}
-
-.bg-noise {
-  position:fixed;
-  inset:0;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+    radial-gradient(circle at 20% 30%, #ff005c66, transparent 45%),
+    radial-gradient(circle at 80% 20%, #7a00ff66, transparent 40%),
+    radial-gradient(circle at 50% 80%, #ffe60055, transparent 45%);
   z-index:-2;
 }
 
-.bg-vignette {
+body::after {
+  content:"";
   position:fixed;
   inset:0;
-  background:radial-gradient(circle, transparent 40%, #000 90%);
+  background:
+    radial-gradient(circle, transparent 40%, #000 90%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.035),
+      rgba(255,255,255,0.035) 1px,
+      transparent 1px,
+      transparent 2px
+    );
   z-index:-1;
+  pointer-events:none;
 }
 
-/* LAYOUT */
+/* ================= LAYOUT ================= */
+
 .frame {
   min-height:100vh;
   display:flex;
@@ -51,13 +59,18 @@ html,body {
   align-items:center;
   justify-content:center;
   padding:70px 20px;
+  position:relative;
+  z-index:1;
 }
 
-/* TABS */
+/* ================= TABS ================= */
+
 .tabs {
   display:flex;
   gap:22px;
   margin-bottom:50px;
+  flex-wrap:wrap;
+  justify-content:center;
 }
 
 .tab {
@@ -82,43 +95,60 @@ html,body {
   border:none;
 }
 
-/* PANELS */
+/* ================= PANELS ================= */
+
 .panel {
   display:none;
-  max-width:920px;
+  max-width:960px;
   width:100%;
   padding:70px 50px;
   background:linear-gradient(180deg,#14002e,#070012);
   border:2px solid #ff005c55;
-  box-shadow:0 0 80px #ff005c33, inset 0 0 40px #000;
+  box-shadow:
+    0 0 80px #ff005c33,
+    inset 0 0 40px #000;
   text-align:center;
 }
 
 .panel.active { display:block; }
 
-/* TITLE */
+/* ================= TITLE ================= */
+
 .title {
-  font-family:"Rubik Glitch", cursive;
-  font-size:clamp(70px, 11vw, 150px);
-  background:linear-gradient(90deg,var(--acid-yellow),var(--toxic-pink),var(--electric-purple));
+  font-family:"Anton", sans-serif;
+  font-size:clamp(80px, 12vw, 180px);
+  letter-spacing:.08em;
+  background:linear-gradient(
+    90deg,
+    var(--acid-yellow),
+    var(--toxic-pink),
+    var(--electric-purple)
+  );
   -webkit-background-clip:text;
+  background-clip:text;
   color:transparent;
-  text-shadow:0 0 25px #ff005caa,0 0 60px #7a00ffaa;
+  text-shadow:
+    0 0 40px #ff005caa,
+    0 0 80px #7a00ff66;
 }
 
-/* TAGLINE */
+/* ================= TAGLINE ================= */
+
 .tagline {
-  margin-top:10px;
+  margin-top:14px;
   font-family:"JetBrains Mono", monospace;
   color:var(--text-muted);
+  line-height:1.6;
 }
 
-/* STATS */
+/* ================= STATS ================= */
+
 .stats {
   display:flex;
   justify-content:center;
   gap:50px;
   margin:45px 0;
+  flex-wrap:wrap;
 }
 
 .stats span {
@@ -127,7 +157,8 @@ html,body {
   color:var(--text-muted);
 }
 
-/* QTY */
+/* ================= QTY ================= */
+
 .qty {
   display:flex;
   justify-content:center;
@@ -145,12 +176,14 @@ html,body {
   font-family:"JetBrains Mono", monospace;
 }
 
-/* BUTTONS */
+/* ================= BUTTONS ================= */
+
 .actions {
   display:flex;
   justify-content:center;
   gap:30px;
   margin-top:35px;
+  flex-wrap:wrap;
 }
 
 .btn {
@@ -175,7 +208,8 @@ html,body {
   box-shadow:0 0 35px var(--acid-yellow);
 }
 
-/* LINKS */
+/* ================= LINKS ================= */
+
 .links {
   margin-top:45px;
   display:flex;
@@ -194,18 +228,21 @@ html,body {
   color:var(--acid-yellow);
 }
 
-/* STATUS */
+/* ================= STATUS ================= */
+
 .status {
   margin-top:30px;
   font-family:"JetBrains Mono", monospace;
   opacity:.75;
 }
 
-/* STAKE */
+/* ================= STAKE ================= */
+
 .stake-box {
   display:flex;
   justify-content:center;
   gap:20px;
+  flex-wrap:wrap;
 }
 
 .stake-box input {
@@ -214,5 +251,87 @@ html,body {
   border:2px solid var(--toxic-pink);
   color:var(--toxic-pink);
 }
+
+/* ================= FAQ ================= */
+
+.faq {
+  margin-top:50px;
+  text-align:left;
+  font-family:"JetBrains Mono", monospace;
+}
+
+.faq h3 {
+  margin-top:30px;
+  color:var(--acid-yellow);
+  letter-spacing:.15em;
+}
+
+.faq ul {
+  padding-left:20px;
+}
+
+.faq li {
+  margin-bottom:10px;
+  color:var(--text-muted);
+}
+
+/* ================= ROADMAP ================= */
+
+.roadmap {
+  display:flex;
+  flex-direction:column;
+  gap:40px;
+  margin-top:40px;
+  text-align:left;
+}
+
+.phase {
+  border-left:4px solid var(--toxic-pink);
+  padding-left:20px;
+}
+
+.phase h3 {
+  color:var(--acid-yellow);
+  margin-bottom:10px;
+  letter-spacing:.2em;
+}
+
+.phase p {
+  color:var(--text-muted);
+  line-height:1.6;
+}
+
+/* ================= GALLERY ================= */
+
+.gallery {
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(180px, 1fr));
+  gap:20px;
+  margin-top:40px;
+}
+
+.gallery-item {
+  aspect-ratio:1/1;
+  background:#000;
+  border:2px solid #ff005c55;
+  box-shadow:0 0 30px #ff005c22;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:700px) {
+  .panel {
+    padding:50px 24px;
+  }
+
+  .title {
+    font-size:clamp(60px, 18vw, 120px);
+  }
+
+  .stats {
+    gap:24px;
+  }
+}
+
 
 
