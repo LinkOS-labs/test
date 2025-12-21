@@ -5,7 +5,7 @@
   <title>Party Punks</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- FONTS (REAL, NOT FALLBACK) -->
+  <!-- REAL FONT (VISIBLE DIFFERENCE) -->
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./style.css" />
@@ -21,6 +21,7 @@
       <button class="tab" data-tab="stake">STAKE</button>
       <button class="tab" data-tab="about">ABOUT</button>
       <button class="tab" data-tab="roadmap">ROADMAP</button>
+      <button class="tab" data-tab="live">LIVE</button>
       <button class="tab" data-tab="gallery">GALLERY</button>
     </nav>
 
@@ -41,23 +42,17 @@
       </p>
 
       <div class="stats">
-        <div><span>SUPPLY</span><b><span id="minted">–</span> / <span id="max">–</span></b></div>
+        <div><span>SUPPLY</span><b>20,000</b></div>
         <div><span>PRICE</span><b>0.00005 ETH</b></div>
         <div><span>NETWORK</span><b>BASE</b></div>
       </div>
 
-      <div class="qty">
-        <button id="minus">−</button>
-        <input id="qty" type="number" value="1" min="1" />
-        <button id="plus">+</button>
-      </div>
-
       <div class="actions">
-        <button id="btnConnect" class="btn ghost">CONNECT</button>
-        <button id="btnMint" class="btn primary" disabled>MINT</button>
+        <button class="btn ghost">CONNECT</button>
+        <button class="btn primary">MINT</button>
       </div>
 
-      <div id="status" class="status">READY.</div>
+      <div class="status">READY.</div>
     </section>
 
     <!-- STAKE -->
@@ -66,25 +61,24 @@
       <p>Stake your NFTs and accumulate Party Points.</p>
 
       <div class="stake-box">
-        <input id="stakeTokenId" type="number" placeholder="Token ID" />
-        <button id="btnStake" class="btn primary">STAKE</button>
-        <button id="btnUnstake" class="btn ghost">UNSTAKE</button>
+        <input type="number" placeholder="Token ID" />
+        <button class="btn primary">STAKE</button>
+        <button class="btn ghost">UNSTAKE</button>
       </div>
 
       <div class="faq">
-        <h3>HOW STAKING WORKS</h3>
+        <h3>HOW IT WORKS</h3>
         <ul>
-          <li>Stake Party Punks to earn <b>Party Points</b>.</li>
-          <li>Points accumulate while NFTs are staked.</li>
-          <li>Unstake anytime — points remain.</li>
-          <li>Higher rarity may receive boosted rewards.</li>
+          <li>Stake NFTs to earn Party Points</li>
+          <li>Points accumulate over time</li>
+          <li>Unstake anytime</li>
         </ul>
 
         <h3>REWARDS</h3>
         <ul>
-          <li>🎁 Premium surprise airdrops.</li>
-          <li>🎉 Party Points for future development.</li>
-          <li>🧬 Access to experimental utilities.</li>
+          <li>🎁 Premium surprise airdrops</li>
+          <li>🎉 Party Points for future utilities</li>
+          <li>🧬 Early access to experiments</li>
         </ul>
       </div>
     </section>
@@ -99,23 +93,20 @@
       </p>
 
       <p>
-        Built for speed, low fees and experimentation, Party Punks holders gain access
-        to future utilities, airdrops and evolving on-chain experiences.
+        Built for speed, low fees and experimentation. Holders benefit from future
+        utilities, airdrops and evolving on-chain experiences.
       </p>
 
       <p>
-        Completely original creations, designed for underground culture,
-        nightlife, chaos and digital rebellion.
+        Completely original creations for underground culture, nightlife and digital chaos.
       </p>
 
       <p>
         Party Punks is more than a collection — it’s a <b>movement</b>.
-        A shared identity for degens, builders and creatives pushing culture forward.
       </p>
 
       <p>
-        Inspired by the legendary <b>CryptoPunks</b>, with deep respect and gratitude
-        to <b>Larva Labs</b> for pioneering the space.
+        Inspired by the legendary <b>CryptoPunks</b>, with respect to <b>Larva Labs</b>.
       </p>
     </section>
 
@@ -124,44 +115,44 @@
       <h2>ROADMAP</h2>
 
       <div class="roadmap-graphic">
-
         <div class="step">
           <span class="dot"></span>
           <h3>PHASE 1</h3>
-          <p>
-            Development · Marketing · Community · Airdrops<br>
-            <b>Mint:</b> 0.00005 ETH<br>
-            <b>Supply:</b> 5,000 units
-          </p>
+          <p>Development · Marketing · Airdrops<br><b>Mint:</b> 0.00005 ETH<br><b>5,000 NFTs</b></p>
         </div>
 
         <div class="step">
           <span class="dot"></span>
           <h3>PHASE 2</h3>
-          <p>
-            Ecosystem expansion · Staking · Rewards<br>
-            <b>Mint:</b> 0.0001 ETH<br>
-            <b>Total supply:</b> 15,000 units
-          </p>
+          <p>Staking · Expansion<br><b>Mint:</b> 0.0001 ETH<br><b>15,000 total</b></p>
         </div>
 
         <div class="step">
           <span class="dot"></span>
           <h3>PHASE 3</h3>
-          <p>
-            Gallery launch · Long-term development<br>
-            Experiments, collaborations & new utilities
-          </p>
+          <p>Gallery · Long-term development · Experiments</p>
         </div>
-
       </div>
+    </section>
+
+    <!-- LIVE -->
+    <section class="panel" id="tab-live">
+      <h2>LIVE STATS</h2>
+
+      <div class="live-stats">
+        <div class="stat"><span>HOLDERS</span><b id="liveHolders">COMING SOON</b></div>
+        <div class="stat"><span>MINTED</span><b id="liveMinted">COMING SOON</b></div>
+        <div class="stat"><span>FLOOR</span><b id="liveFloor">COMING SOON</b></div>
+        <div class="stat"><span>VOLUME 24H</span><b id="liveVolume">COMING SOON</b></div>
+      </div>
+
+      <p class="live-note">Auto-updates when contract is live.</p>
     </section>
 
     <!-- GALLERY -->
     <section class="panel" id="tab-gallery">
       <h2>GALLERY</h2>
-      <p>Curated Party Punks gallery. Final integration coming soon.</p>
-
+      <p>Curated Party Punks preview.</p>
       <div class="gallery">
         <div class="gallery-item"></div>
         <div class="gallery-item"></div>
@@ -172,25 +163,18 @@
 
   </main>
 
-  <!-- TABS SCRIPT -->
+  <!-- TABS LOGIC -->
   <script>
-    const tabs = document.querySelectorAll(".tab");
-    const panels = document.querySelectorAll(".panel");
-
-    tabs.forEach(tab => {
-      tab.addEventListener("click", () => {
-        const target = tab.dataset.tab;
-        tabs.forEach(t => t.classList.remove("active"));
-        panels.forEach(p => p.classList.remove("active"));
+    document.querySelectorAll(".tab").forEach(tab => {
+      tab.onclick = () => {
+        document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+        document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
         tab.classList.add("active");
-        document.getElementById("tab-" + target).classList.add("active");
-      });
+        document.getElementById("tab-" + tab.dataset.tab).classList.add("active");
+      };
     });
   </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
-  <script src="./mint.js"></script>
-  <script src="./staking.js"></script>
-
+  <script src="./live.js"></script>
 </body>
 </html>
