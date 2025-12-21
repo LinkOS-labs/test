@@ -1,166 +1,340 @@
+/* ===============================
+   THE PUNK TANG CLAN — STYLE
+   =============================== */
+
 :root {
-  --gold:#ffe600;
-  --purple:#7a00ff;
-  --red:#ff005c;
-  --bg:#050014;
-  --text:#f6f2ff;
-  --muted:#b8a9ff;
+  --gold: #f5d76e;
+  --red: #c0392b;
+  --dark-red: #7f1d1d;
+  --bg: #0a0a0a;
+  --panel: #111111;
+  --text: #f2f2f2;
+  --muted: #9a9a9a;
 }
 
-* { box-sizing:border-box; }
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
+}
 
 html, body {
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:"JetBrains Mono", monospace;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-/* BACKGROUND */
+/* ===== BACKGROUND ATMOSPHERE ===== */
 body::before {
-  content:"";
-  position:fixed;
-  inset:-20%;
+  content: "";
+  position: fixed;
+  inset: -20%;
   background:
-    radial-gradient(circle at 30% 30%, #ff005c66, transparent 45%),
-    radial-gradient(circle at 70% 20%, #7a00ff66, transparent 40%);
-  z-index:-2;
+    radial-gradient(circle at 30% 20%, rgba(192,57,43,0.35), transparent 45%),
+    radial-gradient(circle at 70% 30%, rgba(245,215,110,0.25), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(127,29,29,0.35), transparent 50%);
+  z-index: -2;
 }
 
-/* LAYOUT */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.03),
+      rgba(255,255,255,0.03) 1px,
+      transparent 1px,
+      transparent 2px
+    ),
+    radial-gradient(circle, transparent 55%, #000 95%);
+  z-index: -1;
+}
+
+/* ===== LAYOUT ===== */
 .frame {
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding:80px 24px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 22px 120px;
 }
 
-/* TABS */
+/* ===== NAV TABS ===== */
 .tabs {
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-  justify-content:center;
-  margin-bottom:40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 50px;
 }
+
 .tab {
-  border:2px solid var(--red);
-  background:none;
-  color:var(--red);
-  padding:10px 22px;
-  cursor:pointer;
+  background: transparent;
+  border: 2px solid var(--red);
+  color: var(--red);
+  padding: 10px 22px;
+  font-size: 13px;
+  letter-spacing: .25em;
+  cursor: pointer;
+  transition: all .25s ease;
 }
+
+.tab:hover {
+  background: var(--red);
+  color: #000;
+}
+
 .tab.active {
-  background:linear-gradient(135deg,var(--red),var(--gold));
-  color:#000;
+  background: linear-gradient(135deg, var(--red), var(--gold));
+  color: #000;
+  border: none;
 }
 
-/* PANELS */
+/* ===== PANELS ===== */
 .panel {
-  display:none;
-  max-width:960px;
-  width:100%;
-  padding:60px 40px;
-  background:#0b001a;
-  border:2px solid #ff005c55;
-  text-align:center;
+  display: none;
+  max-width: 960px;
+  width: 100%;
+  padding: 64px 42px;
+  background: linear-gradient(180deg, #120a0a, #0a0a0a);
+  border: 2px solid rgba(192,57,43,0.45);
+  box-shadow: 0 0 60px rgba(192,57,43,0.25);
+  text-align: center;
 }
-.panel.active { display:block; }
 
-/* TITLE */
+.panel.active {
+  display: block;
+}
+
+/* ===== TITLES ===== */
 .title {
-  font-family:"Bricolage Grotesque", sans-serif;
-  font-size:clamp(88px, 14vw, 200px);
-  font-weight:800;
-  background:linear-gradient(120deg,#ffe600,#ff005c,#7a00ff);
-  -webkit-background-clip:text;
-  color:transparent;
+  font-family: "ZCOOL QingKe HuangYou", cursive;
+  font-size: clamp(88px, 14vw, 200px);
+  letter-spacing: .12em;
+  color: var(--gold);
+  margin: 0 0 20px;
+  text-shadow:
+    0 0 20px rgba(245,215,110,0.35),
+    0 0 50px rgba(192,57,43,0.25);
 }
 
-/* MANIFESTO */
+h2 {
+  font-family: "ZCOOL QingKe HuangYou", cursive;
+  font-size: 42px;
+  letter-spacing: .12em;
+  color: var(--gold);
+  margin-bottom: 30px;
+}
+
+h3 {
+  font-size: 14px;
+  letter-spacing: .25em;
+  color: var(--gold);
+  margin-top: 34px;
+}
+
+/* ===== TEXT ===== */
+p {
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 14px 0;
+}
+
+.tagline {
+  margin: 20px 0 40px;
+  letter-spacing: .18em;
+  color: var(--muted);
+}
+
+/* ===== MANIFESTO ===== */
 .manifesto {
-  margin:24px 0 40px;
-  letter-spacing:.3em;
-  color:var(--muted);
+  margin: 30px 0 40px;
 }
 
-/* BUTTONS */
+.manifesto p {
+  font-family: "ZCOOL QingKe HuangYou", cursive;
+  font-size: 22px;
+  letter-spacing: .18em;
+  color: var(--gold);
+  margin: 10px 0;
+}
+
+/* ===== BUTTONS ===== */
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
 .btn {
-  padding:16px 36px;
-  border:2px solid var(--gold);
-  background:none;
-  color:var(--gold);
+  padding: 16px 38px;
+  background: transparent;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: .25em;
+  cursor: pointer;
+  transition: all .25s ease;
 }
+
+.btn:hover {
+  background: var(--gold);
+  color: #000;
+}
+
 .btn.primary {
-  background:linear-gradient(135deg,var(--gold),var(--red));
-  color:#000;
+  background: linear-gradient(135deg, var(--gold), var(--red));
+  border: none;
+  color: #000;
 }
 
-/* ACTIVITY */
+.btn.ghost {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+/* ===== STATS (MINT) ===== */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 40px 0;
+  flex-wrap: wrap;
+}
+
+.stats span {
+  display: block;
+  font-size: 11px;
+  letter-spacing: .3em;
+  color: var(--muted);
+}
+
+.stats b {
+  font-size: 18px;
+  color: var(--gold);
+}
+
+/* ===== CLAN STATS ===== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 26px;
+  margin-bottom: 40px;
+}
+
+.stat-box {
+  padding: 24px;
+  background: #000;
+  border: 1px solid rgba(192,57,43,0.5);
+}
+
+.stat-box span {
+  display: block;
+  font-size: 11px;
+  letter-spacing: .3em;
+  color: var(--muted);
+}
+
+.stat-box b {
+  display: block;
+  margin-top: 10px;
+  font-size: 22px;
+  color: var(--gold);
+}
+
+/* ===== ACTIVITY ===== */
 .activity-feed {
-  display:flex;
-  flex-direction:column;
-  gap:16px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
+
 .activity-item {
-  background:#000;
-  border:1px solid #ff005c44;
-  padding:18px;
-}
-.type.mint { color:#ffe600; }
-.type.sale { color:#00ffcc; }
-.type.ritual { color:#7a00ff; }
-
-/* POINTS */
-.points-box {
-  background:#000;
-  padding:30px;
-  border:1px solid #7a00ff55;
-}
-.points-status {
-  margin-top:24px;
-  border:1px dashed #ffe60088;
-  padding:12px;
+  background: #000;
+  border-left: 4px solid var(--red);
+  padding: 18px 20px;
+  text-align: left;
 }
 
-/* LIVE */
-.live-stats {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:30px;
-}
-.stat {
-  background:#000;
-  padding:24px;
-  border:1px solid #ff005c55;
-}
-.stat b {
-  color:var(--gold);
+.activity-item p {
+  margin: 6px 0;
+  color: var(--text);
 }
 
-/* ROADMAP */
+.activity-item small {
+  color: var(--muted);
+}
+
+.type {
+  font-size: 11px;
+  letter-spacing: .3em;
+}
+
+.type.mint { color: var(--gold); }
+.type.transfer { color: #c77dff; }
+.type.ritual { color: #ff6b6b; }
+
+/* ===== ROADMAP ===== */
 .roadmap-graphic {
-  display:flex;
-  flex-direction:column;
-  gap:40px;
-}
-.dot {
-  width:14px;
-  height:14px;
-  background:var(--gold);
-  border-radius:50%;
-  margin:0 auto 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
 }
 
-/* GALLERY */
-.gallery {
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-  gap:20px;
+.step {
+  padding-top: 10px;
 }
+
+.dot {
+  width: 14px;
+  height: 14px;
+  background: var(--gold);
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  box-shadow: 0 0 20px rgba(245,215,110,0.6);
+}
+
+/* ===== GALLERY ===== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 22px;
+  margin-top: 30px;
+}
+
 .gallery-item {
-  aspect-ratio:1/1;
-  background:#000;
-  border:2px solid #ff005c55;
+  aspect-ratio: 1 / 1;
+  background: #000;
+  border: 2px solid rgba(192,57,43,0.45);
+}
+
+/* ===== STATUS / NOTES ===== */
+.status,
+.live-note {
+  margin-top: 26px;
+  font-size: 12px;
+  letter-spacing: .25em;
+  color: var(--muted);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 700px) {
+  .panel {
+    padding: 48px 22px;
+  }
+
+  .title {
+    font-size: clamp(64px, 18vw, 140px);
+  }
+
+  h2 {
+    font-size: 34px;
+  }
 }
