@@ -1,5 +1,5 @@
 /* =================================================
-   THE PUNK TANG CLAN — FINAL STYLE
+   PUNK TANG CLAN — FINAL STYLE
    ================================================= */
 
 /* ---------- VARIABLES ---------- */
@@ -7,8 +7,8 @@
   --gold: #f5d76e;
   --red: #c0392b;
   --dark-red: #7f1d1d;
-  --bg: #0a0a0a;
-  --panel: #0f0f0f;
+  --bg: #070707;
+  --panel: #0e0b0b;
   --text: #f2f2f2;
   --muted: #a0a0a0;
 }
@@ -23,7 +23,7 @@ html, body {
   padding: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: "Inter", sans-serif;
+  font-family: "JetBrains Mono", monospace;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -59,19 +59,74 @@ body::after {
 /* ---------- LAYOUT ---------- */
 .frame {
   min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 22px 120px;
+}
+
+/* ---------- HEADER ---------- */
+.topbar {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  padding: 80px 22px 120px;
+  margin-bottom: 42px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.brand-name {
+  font-family: "Permanent Marker", cursive;
+  font-size: 28px;
+  letter-spacing: .15em;
+  color: var(--gold);
+}
+
+.brand-sub {
+  font-size: 11px;
+  letter-spacing: .25em;
+  color: var(--muted);
+}
+
+.brand-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  padding: 8px 14px;
+  border: 1px solid var(--red);
+  color: var(--red);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: .25em;
+  transition: all .2s ease;
+}
+
+.chip:hover {
+  background: var(--red);
+  color: #000;
 }
 
 /* ---------- TABS ---------- */
 .tabs {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   gap: 14px;
   margin-bottom: 50px;
+  flex-wrap: wrap;
 }
 
 .tab {
@@ -79,7 +134,7 @@ body::after {
   border: 2px solid var(--red);
   color: var(--red);
   padding: 10px 22px;
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: .25em;
   cursor: pointer;
   transition: all .25s ease;
@@ -99,10 +154,9 @@ body::after {
 /* ---------- PANELS ---------- */
 .panel {
   display: none;
-  max-width: 960px;
   width: 100%;
   padding: 64px 42px;
-  background: linear-gradient(180deg, #120a0a, #0a0a0a);
+  background: linear-gradient(180deg, #120a0a, #070707);
   border: 2px solid rgba(192,57,43,0.45);
   box-shadow: 0 0 60px rgba(192,57,43,0.25);
   text-align: center;
@@ -112,10 +166,22 @@ body::after {
   display: block;
 }
 
+/* ---------- HERO BANNERS ---------- */
+.panel-hero {
+  margin: -64px -42px 48px;
+  overflow: hidden;
+  border-bottom: 2px solid rgba(192,57,43,0.4);
+}
+
+.hero-img {
+  width: 100%;
+  display: block;
+}
+
 /* ---------- TITLES ---------- */
 .title {
-  font-family: "ZCOOL QingKe HuangYou", cursive;
-  font-size: clamp(88px, 14vw, 200px);
+  font-family: "Permanent Marker", cursive;
+  font-size: clamp(72px, 14vw, 160px);
   letter-spacing: .12em;
   color: var(--gold);
   margin: 0 0 20px;
@@ -124,26 +190,19 @@ body::after {
     0 0 50px rgba(192,57,43,0.25);
 }
 
-h2 {
-  font-family: "ZCOOL QingKe HuangYou", cursive;
+.h2 {
+  font-family: "Permanent Marker", cursive;
   font-size: 42px;
   letter-spacing: .12em;
   color: var(--gold);
   margin-bottom: 30px;
 }
 
-h3 {
-  font-size: 14px;
-  letter-spacing: .25em;
-  color: var(--gold);
-  margin: 0;
-}
-
 /* ---------- TEXT ---------- */
-p {
+.p {
   color: var(--muted);
-  line-height: 1.7;
-  margin: 14px 0;
+  line-height: 1.8;
+  margin: 16px 0;
 }
 
 .tagline {
@@ -152,17 +211,83 @@ p {
   color: var(--muted);
 }
 
-/* ---------- MANIFESTO ---------- */
-.manifesto {
-  margin: 30px 0 40px;
+/* ---------- STATS GRID ---------- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 26px;
+  margin-bottom: 40px;
 }
 
-.manifesto p {
-  font-family: "ZCOOL QingKe HuangYou", cursive;
+.stat {
+  padding: 24px;
+  background: #000;
+  border: 1px solid rgba(192,57,43,0.5);
+}
+
+.stat span {
+  display: block;
+  font-size: 11px;
+  letter-spacing: .3em;
+  color: var(--muted);
+}
+
+.stat b {
+  display: block;
+  margin-top: 10px;
   font-size: 22px;
-  letter-spacing: .18em;
   color: var(--gold);
-  margin: 10px 0;
+}
+
+/* ---------- PROGRESS ---------- */
+.progress-wrap {
+  margin: 30px 0 20px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: #000;
+  border: 1px solid rgba(192,57,43,0.5);
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--red));
+}
+
+.progress-text {
+  margin-top: 10px;
+  font-size: 12px;
+  letter-spacing: .25em;
+  color: var(--muted);
+}
+
+/* ---------- QTY ---------- */
+.qty {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.qty button {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--red);
+  background: transparent;
+  color: var(--red);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.qty input {
+  width: 70px;
+  text-align: center;
+  background: #000;
+  border: 1px solid var(--red);
+  color: var(--gold);
 }
 
 /* ---------- BUTTONS ---------- */
@@ -171,7 +296,7 @@ p {
   justify-content: center;
   gap: 22px;
   flex-wrap: wrap;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .btn {
@@ -179,7 +304,7 @@ p {
   background: transparent;
   border: 2px solid var(--gold);
   color: var(--gold);
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: .25em;
   cursor: pointer;
   transition: all .25s ease;
@@ -201,186 +326,54 @@ p {
   color: var(--red);
 }
 
-/* ---------- MINT STATS ---------- */
-.stats {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin: 40px 0;
-  flex-wrap: wrap;
-}
-
-.stats span {
-  display: block;
-  font-size: 11px;
-  letter-spacing: .3em;
-  color: var(--muted);
-}
-
-.stats b {
-  font-size: 18px;
-  color: var(--gold);
-}
-
-/* ---------- CLAN STATS ---------- */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 26px;
-  margin-bottom: 40px;
-}
-
-.stat-box {
-  padding: 24px;
-  background: #000;
-  border: 1px solid rgba(192,57,43,0.5);
-}
-
-.stat-box span {
-  display: block;
-  font-size: 11px;
-  letter-spacing: .3em;
-  color: var(--muted);
-}
-
-.stat-box b {
-  display: block;
-  margin-top: 10px;
-  font-size: 22px;
-  color: var(--gold);
-}
-
-/* ---------- ACTIVITY ---------- */
-.activity-feed {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.activity-item {
-  background: #000;
-  border-left: 4px solid var(--red);
-  padding: 18px 20px;
-  text-align: left;
-}
-
-.activity-item p {
-  margin: 6px 0;
-  color: var(--text);
-}
-
-.activity-item small {
-  color: var(--muted);
-}
-
-.type {
-  font-size: 11px;
-  letter-spacing: .3em;
-}
-
-.type.mint { color: var(--gold); }
-.type.transfer { color: #c77dff; }
-.type.ritual { color: #ff6b6b; }
-
-/* ---------- GALLERY ---------- */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 22px;
-  margin-top: 30px;
-}
-
-.gallery-item {
-  aspect-ratio: 1 / 1;
-  background: #000;
-  border: 2px solid rgba(192,57,43,0.45);
-}
-
-/* ---------- ROADMAP (GRAPHIC) ---------- */
-.roadmap-wrap {
-  position: relative;
-  margin-top: 40px;
-  display: grid;
-  gap: 22px;
-}
-
-.roadmap-line {
-  position: absolute;
-  left: 26px;
-  top: 10px;
-  bottom: 10px;
-  width: 2px;
-  background: linear-gradient(
-    to bottom,
-    rgba(245,215,110,0.75),
-    rgba(192,57,43,0.55),
-    rgba(127,29,29,0.55)
-  );
-  opacity: .55;
-}
-
-.rm-card {
-  position: relative;
-  padding: 22px 22px 18px 64px;
-  text-align: left;
-  background: linear-gradient(180deg, #0f0a0a, #070707);
-  border: 1px solid rgba(192,57,43,0.45);
-  box-shadow: 0 0 35px rgba(192,57,43,0.14);
-}
-
-.rm-head {
-  display: grid;
-  grid-template-columns: 52px 1fr;
-  gap: 14px;
-  align-items: center;
-}
-
-.rm-seal {
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(245,215,110,0.4), rgba(192,57,43,0.3));
-  color: var(--gold);
-  font-family: "ZCOOL QingKe HuangYou", cursive;
-  font-size: 22px;
-  position: relative;
-}
-
-.rm-seal::before {
-  content: "";
-  position: absolute;
-  left: -38px;
-  top: 50%;
-  width: 38px;
-  height: 2px;
-  background: rgba(245,215,110,0.45);
-}
-
-.rm-list {
+/* ---------- ROADMAP ---------- */
+.roadmap {
   list-style: none;
   padding: 0;
-  margin: 14px 0;
+  margin: 0;
   display: grid;
-  gap: 10px;
+  gap: 14px;
 }
 
-.rm-list li {
+.roadmap li {
+  padding: 16px 18px;
+  background: #000;
+  border-left: 4px solid var(--red);
+  text-align: left;
+}
+
+/* ---------- ABOUT / MANIFESTO ---------- */
+.about-cards {
   display: grid;
-  grid-template-columns: 14px 1fr;
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  margin-top: 40px;
 }
 
-.rm-bullet {
-  width: 10px;
-  height: 10px;
-  background: linear-gradient(135deg, var(--gold), var(--red));
+.card {
+  padding: 26px;
+  background: #000;
+  border: 1px solid rgba(192,57,43,0.45);
 }
 
-/* ---------- FOOT NOTES ---------- */
-.status,
-.live-note {
+.card h3 {
+  margin-bottom: 12px;
+  color: var(--gold);
+  letter-spacing: .2em;
+  font-size: 13px;
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+  margin-top: 80px;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: .25em;
+  color: var(--muted);
+}
+
+/* ---------- STATUS ---------- */
+.status {
   margin-top: 26px;
   font-size: 12px;
   letter-spacing: .25em;
@@ -390,8 +383,7 @@ p {
 /* ---------- MOBILE ---------- */
 @media (max-width: 700px) {
   .panel { padding: 48px 22px; }
-  .title { font-size: clamp(64px, 18vw, 140px); }
-  h2 { font-size: 34px; }
-  .roadmap-line { left: 18px; }
-  .rm-card { padding-left: 54px; }
+  .panel-hero { margin: -48px -22px 40px; }
+  .title { font-size: clamp(56px, 18vw, 120px); }
+  .h2 { font-size: 32px; }
 }
