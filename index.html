@@ -5,227 +5,163 @@
   <title>PUNK TANG CLAN</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="description"
-        content="PUNK TANG CLAN — Not art. Not finance. Discipline is power. A clan forged on-chain." />
+  <meta name="description" content="Punk Tang Clan — Not art. Not finance. Discipline is power." />
 
   <!-- Social -->
   <meta property="og:title" content="PUNK TANG CLAN" />
-  <meta property="og:description"
-        content="Not art. Not finance. Discipline is power. The clan adapts." />
+  <meta property="og:description" content="Not art. Not finance. Discipline is power." />
   <meta property="og:image" content="assets/banners/banner-mint.webp" />
-  <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=PTC_FINAL" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <!-- Background -->
-  <div class="bg-banner"></div>
-  <div class="bg-overlay"></div>
+<div class="bg-banner"></div>
+<div class="bg-overlay"></div>
 
-  <main class="frame">
+<main class="frame">
 
-    <!-- HEADER -->
-    <header class="topbar">
-      <div class="brand">
-        <img
-          class="brand-logo"
-          src="assets/logo/logo-circle.png"
-          alt="Punk Tang Clan logo"
-        />
-        <div class="brand-text">
-          <div class="brand-name">PUNK TANG CLAN</div>
-          <div class="brand-sub">Discipline • Permanence • On-chain clan</div>
-        </div>
+  <!-- HEADER -->
+  <header class="topbar">
+    <div class="brand">
+      <img class="brand-logo" src="assets/logo/logo-circle.png" alt="Punk Tang Clan logo">
+      <div>
+        <div class="brand-name">PUNK TANG CLAN</div>
+        <div class="brand-sub">Base • 20,000 Supply • Discipline is power</div>
       </div>
+    </div>
 
-      <div class="brand-links">
-        <!-- cambia luego los links reales -->
-        <a class="chip" href="#" target="_blank">WEBSITE</a>
-        <a class="chip" href="#" target="_blank">X / TWITTER</a>
-        <a class="chip" href="#" target="_blank">OPENSEA</a>
+    <div class="brand-links">
+      <a class="chip" href="https://x.com/APUNKALYPSENOW" target="_blank">X</a>
+      <a class="chip" href="https://opensea.io/es/collection/punk-tang-clan-717430535" target="_blank">OPENSEA</a>
+    </div>
+  </header>
+
+  <!-- TABS (ORDERED) -->
+  <nav class="tabs">
+    <button class="tab active" data-tab="about">ABOUT</button>
+    <button class="tab" data-tab="roadmap">ROADMAP</button>
+    <button class="tab" data-tab="stats">STATS</button>
+    <button class="tab" data-tab="mint">MINT</button>
+  </nav>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="panel active" id="tab-about">
+    <div class="panel-hero">
+      <img src="assets/banners/banner-about.webp" class="hero-img" alt="About banner">
+    </div>
+
+    <h2 class="h2">THE CLAN MANIFESTO</h2>
+
+    <p class="p">
+      Punk Tang Clan is not art.<br>
+      Not finance.<br>
+      Not trends.
+    </p>
+
+    <p class="p">
+      We move in silence.<br>
+      We build in the shadows.<br>
+      We protect the clan.
+    </p>
+  </section>
+
+  <!-- ================= ROADMAP ================= -->
+  <section class="panel" id="tab-roadmap">
+    <div class="panel-hero">
+      <img src="assets/banners/banner-roadmap.webp" class="hero-img" alt="Roadmap banner">
+    </div>
+
+    <h2 class="h2">ROADMAP</h2>
+
+    <ul class="roadmap">
+      <li>Foundation — Branding, site, story</li>
+      <li>Expansion — Staking rituals & airdrops</li>
+      <li>Clan Points — Tiers & advantages</li>
+      <li>Legacy — Collabs, events, permanence</li>
+    </ul>
+  </section>
+
+  <!-- ================= STATS ================= -->
+  <section class="panel" id="tab-stats">
+    <h2 class="h2">LIVE CLAN STATS</h2>
+
+    <div class="stats-grid">
+      <div class="stat"><span>CONTRACT</span><b id="contractFull">–</b></div>
+      <div class="stat"><span>MINTED</span><b id="statsMinted">–</b></div>
+      <div class="stat"><span>REMAINING</span><b id="statsRemaining">–</b></div>
+      <div class="stat"><span>PRICE</span><b>0.00005 ETH</b></div>
+    </div>
+
+    <div class="status" id="statsStatus">LIVE ✓</div>
+  </section>
+
+  <!-- ================= MINT ================= -->
+  <section class="panel" id="tab-mint">
+    <div class="panel-hero">
+      <img src="assets/banners/banner-mint.webp" class="hero-img" alt="Mint banner">
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat"><span>MINTED</span><b id="mintedCount">–</b></div>
+      <div class="stat"><span>MAX SUPPLY</span><b>20000</b></div>
+      <div class="stat"><span>PRICE</span><b>0.00005 ETH</b></div>
+      <div class="stat"><span>CHAIN</span><b>BASE</b></div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
       </div>
-    </header>
-
-    <!-- TABS -->
-    <nav class="tabs">
-      <button class="tab active" data-tab="mint">MINT</button>
-      <button class="tab" data-tab="stats">STATS</button>
-      <button class="tab" data-tab="roadmap">ROADMAP</button>
-      <button class="tab" data-tab="about">MANIFESTO</button>
-    </nav>
-
-    <!-- ================= MINT ================= -->
-    <section class="panel active" id="tab-mint">
-      <div class="panel-hero">
-        <img src="assets/banners/banner-mint.webp"
-             class="hero-img"
-             alt="Punk Tang Clan Mint Banner">
+      <div class="progress-text">
+        <span id="progressPercent">–%</span> minted
       </div>
+    </div>
 
-      <h1 class="title">PUNK TANG CLAN</h1>
+    <div class="qty">
+      <button id="minus">−</button>
+      <input id="qty" type="number" min="1" value="1">
+      <button id="plus">+</button>
+    </div>
 
-      <p class="tagline">
-        Not art. Not finance.<br>
-        Discipline is power.
-      </p>
+    <div class="total">
+      TOTAL: <span id="totalEth">0.00005</span> ETH
+    </div>
 
-      <div class="stats-grid">
-        <div class="stat">
-          <span>MINTED</span>
-          <b id="mintedCount">–</b>
-        </div>
-        <div class="stat">
-          <span>MAX SUPPLY</span>
-          <b>20,000</b>
-        </div>
-        <div class="stat">
-          <span>PRICE</span>
-          <b>0.00005 ETH</b>
-        </div>
-        <div class="stat">
-          <span>CHAIN</span>
-          <b>BASE</b>
-        </div>
-      </div>
+    <div class="actions">
+      <button id="btnConnect" class="btn ghost">CONNECT</button>
+      <button id="btnMint" class="btn primary" disabled>MINT</button>
+    </div>
 
-      <div class="progress-wrap">
-        <div class="progress-bar">
-          <div class="progress-fill" id="progressFill"></div>
-        </div>
-        <div class="progress-text">
-          <span id="progressPercent">–%</span> forged
-        </div>
-      </div>
+    <div id="status" class="status">LOADING LIVE STATS…</div>
+  </section>
 
-      <div class="qty">
-        <button id="minus">−</button>
-        <input id="qty" type="number" min="1" value="1">
-        <button id="plus">+</button>
-      </div>
+  <footer class="footer">
+    © <span id="year"></span> PUNK TANG CLAN
+  </footer>
 
-      <div class="total">
-        TOTAL: <span id="totalEth">0.00005</span> ETH
-      </div>
+</main>
 
-      <div class="actions">
-        <button id="btnConnect" class="btn ghost">CONNECT</button>
-        <button id="btnMint" class="btn primary" disabled>MINT</button>
-      </div>
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
+<script src="mint.js"></script>
 
-      <div id="status" class="status">
-        AWAITING CONTRACT DEPLOYMENT.
-      </div>
-    </section>
-
-    <!-- ================= STATS ================= -->
-    <section class="panel" id="tab-stats">
-      <div class="panel-hero">
-        <div class="hero-placeholder">
-          <div class="hero-placeholder-title">CLAN STATS</div>
-          <div class="hero-placeholder-sub">On-chain truth only</div>
-        </div>
-      </div>
-
-      <h2 class="h2">LIVE STATS</h2>
-
-      <div class="stats-grid big">
-        <div class="stat">
-          <span>CONTRACT</span>
-          <b id="contractFull">–</b>
-        </div>
-        <div class="stat">
-          <span>MINTED</span>
-          <b id="statsMinted">–</b>
-        </div>
-        <div class="stat">
-          <span>REMAINING</span>
-          <b id="statsRemaining">–</b>
-        </div>
-        <div class="stat">
-          <span>STATUS</span>
-          <b>PRE-DEPLOY</b>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= ROADMAP ================= -->
-    <section class="panel" id="tab-roadmap">
-      <div class="panel-hero">
-        <img src="assets/banners/banner-roadmap.webp"
-             class="hero-img"
-             alt="Punk Tang Clan Roadmap">
-      </div>
-
-      <h2 class="h2">THE LIVING SCROLL</h2>
-
-      <ul class="roadmap">
-        <li><b>PHASE I — FOUNDATION</b> · Branding, website, clan identity</li>
-        <li><b>PHASE II — EXPANSION</b> · Clan stats, staking rituals, airdrops</li>
-        <li><b>PHASE III — POWER</b> · Points, boosts, holder-only tools</li>
-        <li><b>PHASE IV — LEGACY</b> · Collabs, events, permanence</li>
-      </ul>
-    </section>
-
-    <!-- ================= MANIFESTO ================= -->
-    <section class="panel" id="tab-about">
-      <div class="panel-hero">
-        <img src="assets/banners/banner-about.webp"
-             class="hero-img"
-             alt="Punk Tang Clan Manifesto">
-      </div>
-
-      <h2 class="h2">THE CLAN MANIFESTO</h2>
-
-      <p class="p">
-        We move in silence.<br>
-        We build in the shadows.<br>
-        We protect the clan.
-      </p>
-
-      <div class="about-cards">
-        <div class="card">
-          <h3>NOT ART</h3>
-          <p>This is identity, not decoration.</p>
-        </div>
-        <div class="card">
-          <h3>NOT FINANCE</h3>
-          <p>No empty yield. No fake promises.</p>
-        </div>
-        <div class="card">
-          <h3>DISCIPLINE</h3>
-          <p>Discipline is power. Permanence is victory.</p>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      © <span id="year"></span> PUNK TANG CLAN — THE CLAN ADAPTS
-    </footer>
-
-  </main>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
-  <script src="mint.js?v=PTC_FINAL"></script>
-
-  <script>
-    document.querySelectorAll(".tab").forEach(tab => {
-      tab.onclick = () => {
-        document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-        document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
-        tab.classList.add("active");
-        document.getElementById("tab-" + tab.dataset.tab).classList.add("active");
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      };
-    });
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+<script>
+document.querySelectorAll(".tab").forEach(tab => {
+  tab.onclick = () => {
+    document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+    document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById("tab-"+tab.dataset.tab).classList.add("active");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+});
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
